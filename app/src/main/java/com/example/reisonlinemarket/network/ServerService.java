@@ -1,5 +1,6 @@
 package com.example.reisonlinemarket.network;
 
+import com.example.reisonlinemarket.model.Category;
 import com.example.reisonlinemarket.model.Product;
 
 import java.util.List;
@@ -14,6 +15,6 @@ public interface ServerService {
     @GET("products")
     Call<List<Product>> getProductList(@QueryMap Map<String, String> queryParameters);
 
-    @GET("products")
-    Call<List<Product>> getSelectedProductList(@QueryMap Map<String, String> queryParameters);
+    @GET("products/category")
+    Call<List<Category>> getCategoryList();
 }

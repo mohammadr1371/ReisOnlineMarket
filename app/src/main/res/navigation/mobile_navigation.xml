@@ -3,32 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
-
+    app:startDestination="@id/navigation_home">
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.reisonlinemarket.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="HomeFragment" >
         <action
-            android:id="@+id/action_navigation_home_to_testFragment"
-            app:destination="@id/testFragment" />
+            android:id="@+id/action_homeFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
-
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.reisonlinemarket.ui.product.ProductFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_product" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_cart"
         android:name="com.example.reisonlinemarket.ui.cart.CartFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_cart" />
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/testFragment"
-        android:name="com.example.reisonlinemarket.ui.home.TestFragment"
-        android:label="fragment_test"
-        tools:layout="@layout/fragment_test" />
+        android:id="@+id/navigation_product"
+        android:name="com.example.reisonlinemarket.ui.product.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" >
+        <action
+            android:id="@+id/action_productFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProductFragment"
+        android:name="com.example.reisonlinemarket.ui.generalfragments.DetailProductFragment"
+        android:label="DetailProductFragment" >
+        <argument
+            android:name="product"
+            app:argType="com.example.reisonlinemarket.model.Product" />
+    </fragment>
 </navigation>

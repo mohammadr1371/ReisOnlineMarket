@@ -38,28 +38,31 @@ public class CustomGsonRetrofitConverter implements JsonDeserializer<List<Produc
             JsonObject productObject = jsonArrayBody.get(i).getAsJsonObject();
             int id = productObject.get("id").getAsInt();
             String name = productObject.get("name").getAsString();
-//            String status = productObject.get("status").getAsString();
-//            String description = productObject.get("short_description").getAsString();
+            String status = productObject.get("status").getAsString();
+            String description = productObject.get("description").getAsString();
             String regularPrice = productObject.get("regular_price").getAsString();
             String salePrice = productObject.get("sale_price").getAsString();
-//            String weight = productObject.get("weight").getAsString();
-//            JsonObject dimensionsObject = productObject.get("dimensions").getAsJsonObject();
-//            String length = dimensionsObject.get("length").getAsString();
-//            String width = dimensionsObject.get("width").getAsString();
-//            String height = dimensionsObject.get("height").getAsString();
-//            JsonArray categoryJsonArray = productObject.get("categories").getAsJsonArray();
-//            List<Product.Categories> categoriesList = new ArrayList<>();
-//            for (int j = 0; j<categoryJsonArray.size(); j++){
-//                JsonObject categoryObject = categoryJsonArray.get(i).getAsJsonObject();
-//                int categoryId = categoryObject.get("id").getAsInt();
-//                String categoryName = categoryObject.get("name").getAsString();
-//                String categorySlug = categoryObject.get("slug").getAsString();
-//                Product.Categories category = new Product.Categories(categoryId, categoryName, categorySlug);
-//                categoriesList.add(category);
-//            }
+            String weight = productObject.get("weight").getAsString();
+            JsonObject dimensionsObject = productObject.get("dimensions").getAsJsonObject();
+            String length = dimensionsObject.get("length").getAsString();
+            String width = dimensionsObject.get("width").getAsString();
+            String height = dimensionsObject.get("height").getAsString();
+            JsonArray categoryJsonArray = productObject.get("categories").getAsJsonArray();
+            List<Product.Categories> categoriesList = new ArrayList<>();
+            for (int j = 0; j<categoryJsonArray.size(); j++){
+                JsonObject categoryObject = categoryJsonArray.get(j).getAsJsonObject();
+                int categoryId = categoryObject.get("id").getAsInt();
+                String categoryName = categoryObject.get("name").getAsString();
+                String categorySlug = categoryObject.get("slug").getAsString();
+                Product.Categories category = new Product.Categories(categoryId, categoryName, categorySlug);
+                categoriesList.add(category);
+            }
             Log.d(TAG, "ghabl az for aks");
             List<String> imageUrlList = new ArrayList<>();
             JsonArray imageJsonArray = productObject.get("images").getAsJsonArray();
+            if(imageJsonArray.size() == 0 || imageJsonArray == null){
+                continue;
+            }
             for (int j = 0; j<imageJsonArray.size(); j++){
                 JsonObject imageObject = imageJsonArray.get(j).getAsJsonObject();
                 String imageUrl = imageObject.get("src").getAsString();
@@ -69,8 +72,13 @@ public class CustomGsonRetrofitConverter implements JsonDeserializer<List<Produc
             Product product = new Product(
                     id,
                     name,
+                    status,
+                    description,
                     regularPrice,
                     salePrice,
+                    weight,
+                    new Product.Dimensions(width, length, height),
+                    categoriesList,
                     imageUrlList);
             productList.add(product);
             Log.d(TAG, "bad az sakhte model"+ product.getName());

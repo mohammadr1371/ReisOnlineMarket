@@ -1,14 +1,430 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.generalfragments.DetailProductFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="product"
+            type="com.example.reisonlinemarket.model.Product" />
+    </data>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ui.generalfragments.DetailProductFragment">
 
-</FrameLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/product_image_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:animateLayoutChanges="true"
+                    android:animationCache="true">
+
+                </androidx.viewpager2.widget.ViewPager2>
+
+                <LinearLayout
+                    android:id="@+id/linear1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/product_image_pager"
+                    android:background="#F44336"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@drawable/detail_row_style">
+
+                        <TextView
+                            android:id="@+id/product_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="16dp"
+                            android:gravity="center"
+                            android:text="@{product.name}"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            tools:text="product_name" />
+
+                        <TextView
+                            android:id="@+id/sale_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_below="@id/product_name"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="110dp"
+                            android:gravity="center"
+                            android:text="@{product.regularPrice}"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            tools:text="sale_price" />
+
+                        <TextView
+                            android:id="@+id/tooman"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_below="@id/product_name"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_toLeftOf="@id/sale_price"
+                            android:gravity="center"
+                            android:text="تومان"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="170dp"
+                            android:layout_height="30dp"
+                            android:layout_below="@id/sale_price"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/add_to_cart_green" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear3"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_below="@id/linear2"
+                    android:background="#F44336"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/detail_row_style">
+
+                        <TextView
+                            android:id="@+id/moshakhasat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="16dp"
+                            android:text="مشخصات"
+                            android:textColor="#F44336"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tool"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/moshakhasat"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="50dp"
+                            android:gravity="center"
+                            android:text="طول"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/arz"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tool"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="50dp"
+                            android:gravity="center"
+                            android:text="عرض"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/ertefa"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/arz"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="50dp"
+                            android:gravity="center"
+                            android:text="ارتفاع"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/vazn"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ertefa"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="50dp"
+                            android:gravity="center"
+                            android:text="وزن"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/Product_length"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/moshakhasat"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="36dp"
+                            android:layout_toLeftOf="@id/tool"
+                            android:text="@{product.dimensions.length}"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            tools:text="120" />
+
+                        <TextView
+                            android:id="@+id/product_width"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/Product_length"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="36dp"
+                            android:layout_toLeftOf="@id/arz"
+                            android:text="@{product.dimensions.width}"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            tools:text="120" />
+
+                        <TextView
+                            android:id="@+id/product_weight"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/product_height"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="36dp"
+                            android:layout_toLeftOf="@id/ertefa"
+                            android:text="@{product.weight}"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            tools:text="120" />
+
+                        <TextView
+                            android:id="@+id/product_height"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/product_width"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="36dp"
+                            android:layout_toLeftOf="@id/ertefa"
+                            android:text="@{product.dimensions.height}"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            tools:text="120" />
+
+                        <TextView
+                            android:id="@+id/cm_tool"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/moshakhasat"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="36dp"
+                            android:layout_toLeftOf="@id/Product_length"
+                            android:text="سانتی متر"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/cm_arz"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cm_tool"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="36dp"
+                            android:layout_toLeftOf="@id/product_width"
+                            android:text="سانتی متر"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/cm_ertefa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cm_arz"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="36dp"
+                            android:layout_toLeftOf="@id/product_height"
+                            android:text="سانتی متر"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/gr_vazn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cm_ertefa"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="36dp"
+                            android:layout_toLeftOf="@id/product_weight"
+                            android:text="سانتی متر"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linear1"
+                    android:background="#F44336"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/detail_row_style">
+
+                        <TextView
+                            android:id="@+id/tozihat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="16dp"
+                            android:text="توضیحات محصول"
+                            android:textColor="#F44336"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/product_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tozihat"
+                            android:layout_marginLeft="26dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="26dp"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="right"
+                            android:text="@{product.description}"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            tools:text="product_description" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linear3"
+                    android:background="#F44336"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/detail_row_style">
+
+                        <TextView
+                            android:id="@+id/nazarat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="16dp"
+                            android:text="نظرات"
+                            android:textColor="#F44336"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/comment_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/nazarat"
+                            android:layout_margin="8dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/nam"
+                            android:layout_width="30dp"
+                            android:layout_height="45dp"
+                            android:layout_below="@id/comment_list"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="16dp"
+                            android:gravity="center"
+                            android:text="نام"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/nam_edit_text"
+                            android:layout_width="330dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/comment_list"
+                            android:layout_toLeftOf="@id/nam"
+                            android:layout_marginRight="12dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/nazar"
+                            android:layout_width="30dp"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="نظر"
+                            android:layout_below="@id/nam"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="16dp"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
+
+                        <EditText
+                            android:id="@+id/nazar_edit_text"
+                            android:layout_width="330dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/nam_edit_text"
+                            android:layout_toLeftOf="@id/nazar"
+                            android:layout_marginRight="12dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginLeft="8dp"/>
+
+                        <Button
+                            android:layout_width="70dp"
+                            android:layout_height="40dp"
+                            android:text="ثبت"
+                            android:layout_below="@id/nazar_edit_text"
+                            android:layout_marginTop="8dp"
+                            android:layout_centerHorizontal="true"
+                            />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+</layout>

@@ -1,5 +1,7 @@
 package com.example.reisonlinemarket.model;
 
+import android.text.Html;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -9,25 +11,52 @@ public class Product implements Serializable {
 
     private int mId;
     private String mName;
-//    private String mStatus;
-//    private String mDescription;
+    private String mStatus;
+    private String mDescription;
     private String mRegularPrice;
     private String mSalePrice;
     private String mWeight;
-//    private Dimensions mDimensions;
-//    private List<Categories> mCategoriesList;
+    private Dimensions mDimensions;
+    private List<Categories> mCategoriesList;
     private List<String> mImageUrlList;
 
-    public Product(int id
-            , String name
-            , String regularPrice
-            , String salePrice
-            , List<String> imageUrlList) {
+    public Product(
+            int id,
+            String name,
+            String status,
+            String description,
+            String regularPrice,
+            String salePrice,
+            String weight,
+            Dimensions dimensions,
+            List<Categories> categoriesList,
+            List<String> imageUrlList) {
         mId = id;
         mName = name;
+        mStatus = status;
+        mDescription = description;
         mRegularPrice = regularPrice;
         mSalePrice = salePrice;
+        mWeight = weight;
+        mDimensions = dimensions;
+        mCategoriesList = categoriesList;
         mImageUrlList = imageUrlList;
+    }
+
+    public String getStatus() {
+        return mStatus;
+    }
+
+    public String getDescription() {
+        return Html.fromHtml(mDescription).toString();
+    }
+
+    public Dimensions getDimensions() {
+        return mDimensions;
+    }
+
+    public List<Categories> getCategoriesList() {
+        return mCategoriesList;
     }
 
     public int getId() {

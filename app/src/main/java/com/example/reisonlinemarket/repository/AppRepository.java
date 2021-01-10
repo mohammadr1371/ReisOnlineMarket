@@ -34,7 +34,7 @@ public class AppRepository {
     private MutableLiveData<List<Product>> mLiveHighScoreList = new MutableLiveData<>();
 
     private AppRepository() {
-        mServerService = RetrofitInstance.getInstance().create(ServerService.class);
+        mServerService = RetrofitInstance.getProductRetrofitInstance().create(ServerService.class);
     }
 
     public LiveData<List<Product>> GetProductList() {
@@ -56,7 +56,7 @@ public class AppRepository {
 
     public LiveData<List<Product>> getMostViewedProductList() {
         Call<List<Product>> listCall =
-                mServerService.getSelectedProductList(QueryParameters.MostViewedProductQueryParameters);
+                mServerService.getProductList(QueryParameters.MostViewedProductQueryParameters);
         listCall.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
@@ -73,7 +73,7 @@ public class AppRepository {
 
     public LiveData<List<Product>> getHighScoreProductList(){
         Call<List<Product>> listCall =
-                mServerService.getSelectedProductList(QueryParameters.HighScoreProductQueryParameters);
+                mServerService.getProductList(QueryParameters.HighScoreProductQueryParameters);
         listCall.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {

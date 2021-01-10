@@ -18,20 +18,22 @@ public class RetrofitInstance {
 
     public static Retrofit sRetrofit;
 
-    public static Retrofit getInstance() {
-        if(sRetrofit == null) {
+    public static Retrofit getProductRetrofitInstance() {
+        if (sRetrofit == null) {
             sRetrofit = new Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(customizedGsonConverterFactory())
-            .build();
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(customizedGsonConverterFactory())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
         }
         return sRetrofit;
     }
 
-    public static Converter.Factory customizedGsonConverterFactory(){
+    public static Converter.Factory customizedGsonConverterFactory() {
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(new TypeToken<List<Product>>(){}.getType()
-                ,new CustomGsonRetrofitConverter());
+        gsonBuilder.registerTypeAdapter(new TypeToken<List<Product>>() {
+                }.getType()
+                , new CustomGsonRetrofitConverter());
         Gson gson = gsonBuilder.create();
         return GsonConverterFactory.create(gson);
     }

@@ -3,127 +3,81 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/home_background"
-    android:padding="4dp"
-    tools:context=".ui.home.HomeFragment">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.home.HomeFragment">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:scrollbars="none"
+            tools:layout_editor_absoluteX="4dp"
+            tools:layout_editor_absoluteY="4dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="right"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="پر بازدیدترین ها"
-                    android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="80dp"
-                    android:layout_marginRight="80dp"
-                    android:src="@drawable/most_viewed_icon" />
-            </LinearLayout>
+                    android:layout_width="80dp"
+                    android:layout_height="280dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/por_bazdid_tarin_ha_1"
+                    android:scrollbars="none"
+                    app:srcCompat="@drawable/por_bazdid_tarin_ha_1" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/top_view_list"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:orientation="horizontal"
-                android:layout_margin="8dp">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/top_view_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_toLeftOf="@id/imageView"
+                    android:background="#FD450B"
+                    android:orientation="horizontal">
 
-            </androidx.recyclerview.widget.RecyclerView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:gravity="right"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="آخرین محصولات"
-                    android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                </androidx.recyclerview.widget.RecyclerView>
 
                 <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="60dp"
+                    android:id="@+id/imageView4"
+                    android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginEnd="80dp"
-                    android:layout_marginRight="80dp"
-                    android:src="@drawable/new_product_icon" />
-            </LinearLayout>
+                    android:layout_below="@id/top_view_list"
+                    android:layout_alignParentRight="true"
+                    app:srcCompat="@drawable/akharin_mahsoolat1" />
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/recently_list"
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:layout_margin="8dp">
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/recently_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:layout_below="@id/imageView4"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="24dp">
 
-            </androidx.viewpager2.widget.ViewPager2>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:gravity="right"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="محبوب ترین ها"
-                    android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                </androidx.viewpager2.widget.ViewPager2>
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginEnd="80dp"
-                    android:layout_marginRight="80dp"
-                    android:src="@drawable/high_score_icon" />
-            </LinearLayout>
+                    android:layout_width="80dp"
+                    android:layout_height="280dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/mahboob_tarin_ha_low" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/high_score_list"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:orientation="horizontal"
-                android:layout_margin="8dp" />
-        </LinearLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/high_score_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:layout_below="@id/recently_list"
+                    android:layout_toRightOf="@id/imageView3"
+                    android:background="#FD450B"
+                    android:orientation="horizontal" />
+            </RelativeLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

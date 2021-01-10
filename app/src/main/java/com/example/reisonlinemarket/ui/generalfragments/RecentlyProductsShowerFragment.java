@@ -2,6 +2,7 @@ package com.example.reisonlinemarket.ui.generalfragments;
 
 import android.os.Bundle;
 
+import androidx.constraintlayout.solver.PriorityGoalRow;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
@@ -21,6 +22,11 @@ public class RecentlyProductsShowerFragment extends Fragment {
     public static final String RPSF = "RPSF";
     private Product mProduct;
     private FragmentRecentlyProductsShowerBinding mViewBinding;
+    private static SetListenerCallback mCallback;
+
+    public static void setCallback(SetListenerCallback callback) {
+        mCallback = callback;
+    }
 
     public static RecentlyProductsShowerFragment newInstance(Product product) {
         RecentlyProductsShowerFragment fragment = new RecentlyProductsShowerFragment();
@@ -43,11 +49,25 @@ public class RecentlyProductsShowerFragment extends Fragment {
         mViewBinding = DataBindingUtil
                 .inflate(inflater, R.layout.fragment_recently_products_shower, container,false);
         initViews();
+        setListener();
         return mViewBinding.getRoot();
     }
 
     private void initViews() {
         mViewBinding.setProduct(mProduct);
         Picasso.get().load(mProduct.getImageUrlList().get(0)).into(mViewBinding.imageOfProduct);
+    }
+
+    private void setListener(){
+        mViewBinding.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCallback.onMainRowClick(mProduct);
+            }
+        });
+    }
+
+    public interface SetListenerCallback{
+        void onMainRowClick(Product product);
     }
 }

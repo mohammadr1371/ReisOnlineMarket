@@ -16,6 +16,7 @@ public class RecentlyViewPagerList extends FragmentStateAdapter {
 
     private ArrayList<Product> mProducts;
 
+
     public RecentlyViewPagerList(@NonNull FragmentActivity fragmentActivity, List<Product> products) {
         super(fragmentActivity);
         mProducts = (ArrayList<Product>) products;

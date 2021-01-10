@@ -7,12 +7,12 @@
         android:title="خانه" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_product"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="محصولات" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_cart"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         android:title="سبد خرید" />
 
